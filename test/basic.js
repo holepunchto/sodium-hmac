@@ -14,15 +14,17 @@ test('basic - sha256', t => {
   t.is(hmac.STATEBYTES, sodium.crypto_hash_sha256_STATEBYTES + sodium.crypto_hash_sha256_BYTES * 2)
 
   const key = b4a.from('password')
+  const input = b4a.from('input')
 
   const state = b4a.alloc(hmac.STATEBYTES)
   const output = b4a.alloc(hmac.BYTES)
 
   hmac.init(state, key)
-  hmac.update(state, b4a.from('input'))
+  hmac.update(state, input)
   hmac.final(state, output)
 
   t.unlike(output, b4a.alloc(hmac.BYTES))
+  t.alike(output, hmac.simple(input, key))
 })
 
 test('basic - sha512', t => {
@@ -32,15 +34,17 @@ test('basic - sha512', t => {
   t.is(hmac.STATEBYTES, sodium.crypto_hash_sha512_STATEBYTES + sodium.crypto_hash_sha512_BYTES * 2)
 
   const key = b4a.from('password')
+  const input = b4a.from('input')
 
   const state = b4a.alloc(hmac.STATEBYTES)
   const output = b4a.alloc(hmac.BYTES)
 
   hmac.init(state, key)
-  hmac.update(state, b4a.from('input'))
+  hmac.update(state, input)
   hmac.final(state, output)
 
   t.unlike(output, b4a.alloc(hmac.BYTES))
+  t.alike(output, hmac.simple(input, key))
 })
 
 test('vectors', t => {

@@ -52,12 +52,23 @@ module.exports = function createHmac (hash) {
     return out
   }
 
+  function simple (data, key, output = b4a.alloc(BYTES)) {
+    const state = b4a.alloc(STATEBYTES)
+
+    init(state, key)
+    update(state, data)
+    final(state, output.subarray(0, BYTES))
+
+    return output
+  }
+
   return {
     BYTES,
     STATEBYTES,
     init,
     update,
-    final
+    final,
+    simple
   }
 }
 

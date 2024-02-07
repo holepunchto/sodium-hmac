@@ -17,6 +17,9 @@ hmac.update(state, Buffer.from('more'))
 hmac.update(state, Buffer.from('data'))
 
 hmac.final(state, output)
+
+// or use simple api
+const same = hmac.simple(b4a.from('somemoredata'), b4a.from('key'))
 ```
 
 ## API
@@ -40,6 +43,7 @@ Returned API:
 - `init`
 - `update`
 - `final`
+- `simple`
 - `BYTES`
 - `STATEBYTES`
 
