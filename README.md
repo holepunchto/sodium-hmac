@@ -68,4 +68,4 @@ Exports an HMAC-SHA512 API.
 
 ## License
 
-MIT
+Apache-2.0
