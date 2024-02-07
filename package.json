@@ -1,6 +1,6 @@
 {
   "name": "@holepunchto/hmac",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "HMAC utility",
   "main": "index.js",
   "scripts": {
