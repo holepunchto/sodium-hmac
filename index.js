@@ -36,7 +36,7 @@ module.exports = function createHmac (hash) {
     hash.update(st, data)
   }
 
-  function final (state, out = b4a.alloc(sodium.crypto_hash_sha512_BYTES)) {
+  function final (state, out = b4a.alloc(BYTES)) {
     const st = state.subarray(0, hash.STATEBYTES)
     const opad = state.subarray(hash.STATEBYTES)
 
