@@ -12,6 +12,7 @@ test('basic - sha256', t => {
   const input = b4a.from('input')
 
   const output = b4a.alloc(hmac.length)
+  const output2 = b4a.alloc(hmac.length)
 
   hmac.init(key)
   hmac.update(input)
@@ -19,6 +20,9 @@ test('basic - sha256', t => {
 
   t.unlike(output, b4a.alloc(hmac.length))
   t.alike(output, HMAC.sha256(input, key))
+
+  HMAC.sha256(input, key, output2)
+  t.alike(output2, output)
 })
 
 test('basic - sha512', t => {
@@ -28,6 +32,7 @@ test('basic - sha512', t => {
   const input = b4a.from('input')
 
   const output = b4a.alloc(hmac.length)
+  const output2 = b4a.alloc(hmac.length)
 
   hmac.init(key)
   hmac.update(input)
@@ -35,6 +40,9 @@ test('basic - sha512', t => {
 
   t.unlike(output, b4a.alloc(hmac.length))
   t.alike(output, HMAC.sha512(input, key))
+
+  HMAC.sha512(input, key, output2)
+  t.alike(output2, output)
 })
 
 test('vectors', t => {

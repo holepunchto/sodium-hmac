@@ -76,17 +76,14 @@ class HMAC {
     return out
   }
 
-  static simple (hash, data, key) {
-    const hmac = new HMAC(hash, key)
-    return hmac.update(data).final()
+  static sha256 (data, key, output) {
+    const hmac = new HMAC(sha256, key)
+    return hmac.update(data).final(output)
   }
 
-  static sha256 (key, data) {
-    return HMAC.simple(sha256, key, data)
-  }
-
-  static sha512 (key, data) {
-    return HMAC.simple(sha512, key, data)
+  static sha512 (data, key, output) {
+    const hmac = new HMAC(sha512, key)
+    return hmac.update(data).final(output)
   }
 }
 

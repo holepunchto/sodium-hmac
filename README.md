@@ -64,6 +64,14 @@ Hash `data` into the HMAC. `hmac.init()` must be called prior to updating
 
 Finlise the HMAC. The result will be written to `buffer` if present
 
+### `const result = HMAC.sha256(data, key, [output])`
+
+Produce an HMAC-SHA256 over `data` with `key`
+
+### `const result = HMAC.sha512(data, key, [output])`
+
+Produce an HMAC-SHA512 over `data` with `key`
+
 ### sha256
 
 Exports an HMAC-compatible SHA256 API.
