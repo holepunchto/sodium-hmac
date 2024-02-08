@@ -5,32 +5,26 @@ HMAC utility
 ## Usage
 
 ```js
-const hmac = require('@holepunchto/hmac/sha256') 
+const { HMAC, sha256 } = require('@holepunchto/hmac')
 
-const state = Buffer.alloc(hmac.STATEBYTES) 
-const output = Buffer.alloc(hmac.STATEBYTES) 
+const hmac = new HMAC(sha256)
 
-hmac.init(state, Buffer.from('key'))
+hmac.init(Buffer.from('key'))
+  .update(Buffer.from('some'))
+  .update(Buffer.from('more'))
+  .update(Buffer.from('data'))
 
-hmac.update(state, Buffer.from('some'))
-hmac.update(state, Buffer.from('more'))
-hmac.update(state, Buffer.from('data'))
-
-hmac.final(state, output)
+const output = hmac.final()
 
 // or use simple api
-const same = hmac.simple(b4a.from('somemoredata'), b4a.from('key'))
+const same = HMAC.sha256(b4a.from('somemoredata'), key)
 ```
 
 ## API
 
-### index.js
+#### `const hmac = new HMAC(hash, [key])`
 
-index.js exports a single helper for wrapping a hash function with an HMAC API.
-
-#### `createHmac(hash)` 
-
-Returns a HMAC API around the given `hash` function.
+Returns a HMAC object using the given `hash` function. If `key` is provided, `init` will be called in the constructror
 
 Expects `hash` to be an object with:
 - `init`
@@ -38,6 +32,8 @@ Expects `hash` to be an object with:
 - `final`
 - `BYTES`
 - `STATEBYTES`
+
+`sha256` and `sha512` are exported by default.
 
 Returned API:
 - `init`
@@ -49,22 +45,32 @@ Returned API:
 
 Example usage:
 ```js
-const blakeHmac = createHmac({
+const blake2b = {
   init: sodium.crypto_generichash_init,
   update: sodium.crypto_generichash_update,
   final: sodium.crypto_generichash_final,
   BYTES: sodium.crypto_generichash_BYTES,
   STATEBYTES: sodium.crypto_generichash_STATEBYTES
-})
+}
+
+const hmac = new HMAC(blake2b)
 ```
 
-### sha256.js
+### `hmac.update(data)`
 
-Exports an HMAC-SHA256 API.
+Hash `data` into the HMAC. `hmac.init()` must be called prior to updating
 
-### sha512.js
+### `const output = hmac.update([buffer])`
 
-Exports an HMAC-SHA512 API.
+Finlise the HMAC. The result will be written to `buffer` if present
+
+### sha256
+
+Exports an HMAC-compatible SHA256 API.
+
+### sha512
+
+Exports an HMAC-compatible SHA512 API.
 
 ## License
 

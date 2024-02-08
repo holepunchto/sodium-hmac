@@ -22,8 +22,7 @@
   },
   "files": [
     "index.js",
-    "sha256.js",
-    "sha512.js"
+    "hash/*"
   ],
   "bugs": {
     "url": "https://github.com/holepunchto/hmac/issues"
