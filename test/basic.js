@@ -4,11 +4,10 @@ const b4a = require('b4a')
 
 const vectors = require('./vectors.json')
 
-const hmac256 = require('../sha256')
-const hmac512 = require('../sha512')
+const { create, sha256, sha512 } = require('../')
 
 test('basic - sha256', t => {
-  const hmac = hmac256
+  const hmac = create(sha256)
 
   t.is(hmac.BYTES, sodium.crypto_hash_sha256_BYTES)
   t.is(hmac.STATEBYTES, sodium.crypto_hash_sha256_STATEBYTES + sodium.crypto_hash_sha256_BYTES * 2)
@@ -28,7 +27,7 @@ test('basic - sha256', t => {
 })
 
 test('basic - sha512', t => {
-  const hmac = hmac512
+  const hmac = create(sha512)
 
   t.is(hmac.BYTES, sodium.crypto_hash_sha512_BYTES)
   t.is(hmac.STATEBYTES, sodium.crypto_hash_sha512_STATEBYTES + sodium.crypto_hash_sha512_BYTES * 2)
@@ -48,6 +47,9 @@ test('basic - sha512', t => {
 })
 
 test('vectors', t => {
+  const hmac256 = create(sha256)
+  const hmac512 = create(sha512)
+
   const state256 = b4a.alloc(hmac256.STATEBYTES)
   const state512 = b4a.alloc(hmac512.STATEBYTES)
 

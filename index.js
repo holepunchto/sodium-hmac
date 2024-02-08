@@ -1,7 +1,16 @@
 const sodium = require('sodium-universal')
 const b4a = require('b4a')
 
-module.exports = function createHmac (hash) {
+const sha256 = require('./hash/sha256')
+const sha512 = require('./hash/sha512')
+
+module.exports = {
+  create,
+  sha256,
+  sha512
+}
+
+function create (hash) {
   const BYTES = hash.BYTES
   const STATEBYTES = hash.STATEBYTES + 2 * hash.BYTES
 
