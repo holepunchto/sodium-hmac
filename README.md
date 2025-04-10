@@ -1,11 +1,11 @@
-# hmac
+# sodium-hmac
 
 HMAC utility
 
 ## Usage
 
 ```js
-const { HMAC, sha256 } = require('crypto-hmac')
+const { HMAC, sha256 } = require('sodium-hmac')
 
 const hmac = new HMAC(sha256)
 

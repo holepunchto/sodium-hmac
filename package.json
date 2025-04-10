@@ -1,5 +1,5 @@
 {
-  "name": "crypto-hmac",
+  "name": "sodium-hmac",
   "version": "2.0.1",
   "description": "HMAC utility",
   "main": "index.js",
@@ -18,14 +18,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/holepunchto/crypto-hmac.git"
+    "url": "git+https://github.com/holepunchto/sodium-hmac.git"
   },
   "files": [
     "index.js",
     "hash/*"
   ],
   "bugs": {
-    "url": "https://github.com/holepunchto/crypto-hmac/issues"
+    "url": "https://github.com/holepunchto/sodium-hmac/issues"
   },
-  "homepage": "https://github.com/holepunchto/crypto-hmac#readme"
+  "homepage": "https://github.com/holepunchto/sodium-hmac#readme"
 }
