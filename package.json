@@ -1,5 +1,5 @@
 {
-  "name": "@holepunchto/hmac",
+  "name": "crypto-hmac",
   "version": "2.0.1",
   "description": "HMAC utility",
   "main": "index.js",
@@ -18,14 +18,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/holepunchto/hmac.git"
+    "url": "git+https://github.com/holepunchto/crypto-hmac.git"
   },
   "files": [
     "index.js",
     "hash/*"
   ],
   "bugs": {
-    "url": "https://github.com/holepunchto/hmac/issues"
+    "url": "https://github.com/holepunchto/crypto-hmac/issues"
   },
-  "homepage": "https://github.com/holepunchto/hmac#readme"
+  "homepage": "https://github.com/holepunchto/crypto-hmac#readme"
 }

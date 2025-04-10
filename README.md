@@ -5,7 +5,7 @@ HMAC utility
 ## Usage
 
 ```js
-const { HMAC, sha256 } = require('@holepunchto/hmac')
+const { HMAC, sha256 } = require('crypto-hmac')
 
 const hmac = new HMAC(sha256)
 
